@@ -58,7 +58,7 @@ student-performance-ml/
 ├── data/          # Dataset files; raw data is excluded from Git
 ├── models/        # Saved model artifacts; excluded from Git
 ├── notebooks/     # EDA and model-training notebooks
-├── src/           # Reusable Python modules
+├── tests/         # Automated workflow validation
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -91,6 +91,12 @@ Launch Jupyter Notebook:
 jupyter notebook
 ```
 
+Run the automated workflow checks:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
 ## Status
 
 The first end-to-end notebook workflow is implemented in `notebooks/book.ipynb`.
@@ -119,6 +125,21 @@ decisions.
 
 The generated artifact is saved locally as
 `models/student_risk_pipeline.joblib` and is excluded from Git.
+
+The notebook also demonstrates predictions on synthetic feature-only student
+profiles. These profiles do not contain `G1`, `G2`, `G3`, or any target value.
+
+## Limitations and future work
+
+The risk threshold is fixed at `G3 < 10` because this is the project definition;
+a grade of exactly 10 is classified as not at risk. Threshold tuning, probability
+calibration, and cost-sensitive evaluation could produce different decisions.
+
+The dataset is small and includes demographic, family, and socioeconomic proxy
+variables. Performance may vary across groups, and this project does not include
+a formal fairness audit or external validation. Portuguese-course data, merged
+student analysis, threshold analysis, and fairness evaluation are future
+experiments, not production features.
 
 ## Educational-use disclaimer
 
