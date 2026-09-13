@@ -93,7 +93,32 @@ jupyter notebook
 
 ## Status
 
-Project setup complete. Dataset exploration and preprocessing are the next steps.
+The first end-to-end notebook workflow is implemented in `notebooks/book.ipynb`.
+It loads the Mathematics dataset, performs integrity checks and exploratory
+analysis, creates the leakage-safe `at_risk` target, trains two classification
+pipelines, compares their metrics, and saves the selected pipeline with Joblib.
+
+The Portuguese dataset and merged-student analysis are reserved for a later
+experiment.
+
+## Initial results
+
+Using a fixed, stratified 80/20 split and excluding `G1`, `G2`, and `G3` from
+the model features, the initial test results were:
+
+| Model | Accuracy | Precision (at risk) | Recall (at risk) | F1 (at risk) | ROC-AUC |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Logistic Regression | 0.696 | 0.571 | 0.308 | 0.400 | 0.715 |
+| Random Forest | 0.709 | 0.571 | 0.462 | 0.511 | 0.692 |
+
+Random Forest was selected for the initial saved pipeline because it produced
+the stronger at-risk recall and F1 score, and also performed better in the
+five-fold training cross-validation summary. These results are estimates from
+a small dataset and should not be treated as evidence for real educational
+decisions.
+
+The generated artifact is saved locally as
+`models/student_risk_pipeline.joblib` and is excluded from Git.
 
 ## Educational-use disclaimer
 
