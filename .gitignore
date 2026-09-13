@@ -20,5 +20,3 @@ data/*.txt
 # Keep the repository free of local notebook and OS metadata.
 .DS_Store
 Thumbs.db
-
-*.txt
