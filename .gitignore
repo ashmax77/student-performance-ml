@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.env
+
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+models/*.joblib
+models/*.pkl
+
+# Raw dataset files are kept locally and are not committed.
+data/*.csv
+data/*.txt
+
+# Keep the repository free of local notebook and OS metadata.
+.DS_Store
+Thumbs.db
+
+*.txt
